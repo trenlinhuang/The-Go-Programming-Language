@@ -5,3 +5,4 @@
 * [2 Program Structure](2-program-structure.md)
 * [3 Basic Data Types](3-basic-data-types.md)
 * [4 Composite Types](4-composite-types.md)
+* [5 Functions](5-functions.md)
