@@ -7,3 +7,4 @@
 * [4 Composite Types](4-composite-types.md)
 * [5 Functions](5-functions.md)
 * [6 Methods](6-methods.md)
+* [7 Interfaces](7-interfaces.md)
