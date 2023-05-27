@@ -8,4 +8,4 @@
 * [5 Functions](5-functions.md)
 * [6 Methods](6-methods.md)
 * [7 Interfaces](7-interfaces.md)
-* [8 Groutines and Chanenels](8-groutines-and-chanenels.md)
+* [8 Groutines and Channels](8-groutines-and-channels.md)

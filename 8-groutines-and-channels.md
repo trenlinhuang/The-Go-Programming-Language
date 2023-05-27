@@ -1,4 +1,4 @@
-# 8 Groutines and Chanenels
+# 8 Groutines and Channels
 
 ### 8.1 goroutine
 
@@ -132,3 +132,43 @@ sync.waitGroup 可以适用于更灵活的场景，比如 filenames 并不是通
 ```go
 func makeThumbnails4(filenames <-chan string) error
 ```
+
+### 8.6 示例：并发的 Web 爬虫
+
+限制并发量可以通过设置固定的通道大小来实现，也可以生成固定数量的 goroutine。
+
+### 8.7 select 多路复用
+
+```go
+select {
+case <-ch1:
+    // ...
+case x := <-ch2:
+    // ...
+case ch3 <- y:
+    // ...
+default:
+    // 所有通道均未准备好的情况下
+}
+```
+
+有 default 的 select 不会被阻塞。
+
+### 8.9 取消
+
+有时候我们需要让一个 goroutine 停止它当前的任务。
+
+在关闭通道后，所有在通道上的读取操作会立即完成，而不会被阻塞。所以，可以设置一个通道，来实现通知所有相关 goroutine 停止工作的目的。
+
+```go
+select {
+    case <-done:
+        return nil // 从当前 goroutine 返回
+    default:
+}
+```
+
+### 8.10 示例：聊天服务器
+
+...
+
