@@ -9,3 +9,4 @@
 * [6 Methods](6-methods.md)
 * [7 Interfaces](7-interfaces.md)
 * [8 Groutines and Channels](8-groutines-and-channels.md)
+* [9 Concurrency with Shared Variables](9-concurrency-with-shared-variables.md)
