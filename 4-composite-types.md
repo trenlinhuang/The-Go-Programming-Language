@@ -2,7 +2,7 @@
 
 ### 4.1 数组
 
-数组的长度是数组类型的一部分，所以 \[3]int 和 \[4]int 是两种不同的数组类型。数组的长度必须是常量表达式，即这个表达式的值能够在编译时就能计算得出。
+数组的长度是数组类型的一部分，所以 \[3]int 和 \[4]int 是两种不同的数组类型。**数组的长度必须是常量表达式，即这个表达式的值能够在编译时就能计算得出。**
 
 ```go
 q := [3]int{1, 2, 3}
@@ -14,9 +14,9 @@ q := [3]int{1, 2, 3}
 r := [...]int{99: -1}
 ```
 
-声明了一个长度为100的 int 数组，最后一个索引为-1，其他均为默认值0。这种情况下，索引可以按照任意顺序出现，并且可省略。
+声明了一个长度为 100 的 int 数组，最后一个索引为 -1，其他均为默认值 0。这种情况下，索引可以按照任意顺序出现，并且可省略。
 
-如果元素类型可比较，那么数组也是可比较的，可以直接用 == 和 != 来比较两个数组。
+**如果元素类型可比较，那么数组也是可比较的**，可以直接用 == 和 != 来比较两个数组。
 
 在进行函数传参时，Go把数组看为值传递，在函数内部对数组的影响都仅修改副本而不是原始数组。
 
@@ -36,8 +36,6 @@ endlessSummer := summer[:5] // extend a slice
 fmt.Println(endlessSummer) // [June July August September October]
 ```
 
-
-
 💡 当有重叠部分时，对一个切片的修改会导致重叠部分的其他切片数据也被修改。当增加切片成员时，若底层数组无法容纳，会将原底层数组复制到一个更大的空间。
 
 <pre class="language-go"><code class="lang-go">a := [...]int{1, 2, 3, 4, 5, 6}
@@ -52,11 +50,11 @@ s1 = append(s1, 7)
 fmt.Println(s1, s2) // [0 3 4 5 6 7] [1 -2 3 4 5 6]
 </code></pre>
 
-当一个函数的参数为切片类型，但数据为数组时，可以为这个数组创造一个切片，对切片的修改即对原数组的修改：
+当一个函数的参数为切片类型，但待处理数据为数组时，可以为这个数组创造一个切片作为参数，因为对切片的修改即对原数组的修改：
 
 ```go
 a := [...]int{0, 1, 2, 3, 4, 5}
-f(a[:])
+f(a[:]) // type of f: func([]int)
 ```
 
 #### 4.2.1 append 函数
@@ -129,13 +127,16 @@ ages := map[string]int{
 }
 ```
 
-map 中元素的迭代顺序是不固定的，这样迫使程序在不同的散列算法下变得健壮。
+map 中元素的迭代顺序是不固定的，这样迫使编码人员编写的代码在不同的散列算法下都能正确运行，具备健壮性。
 
 ### 4.4 结构体
 
 ```go
+type Employee struct {
+    Name string
+}
 func NewEmployee() *Employee {
-	return &Employee{}
+    return &Employee{}
 }
 
 m := make(map[string]Employee)
@@ -143,7 +144,7 @@ m["a"] = *NewEmployee()
 m["a"].Name = "alice" // Cannot assign to m["a"].Name
 ```
 
-💡 m\["a"] 可以看成返回 value 的一个函数，结构体为值传递，所以并不能改变到原本的结构体成员变量。想要用 map 映射结构体时，值类型应该为结构体指针：
+💡 m\["a"] 可以看成返回 value 的一个函数，结构体为值传递，所以并不能改变到原本的结构体成员变量。想要用 map 映射结构体时，值类型应该为结构体指针（函数返回值类型为结构体时也有相同的情况）：
 
 ```go
 m := make(map[string]*Employee)
@@ -153,7 +154,7 @@ m := make(map[string]*Employee)
 
 ```go
 type Employee struct {
-	Name string
+    Name string
 }
 
 a := struct{ Name string }{"Alice"}
@@ -164,7 +165,7 @@ fmt.Println(a == b) // true
 fmt.Println(a == c) // true
 ```
 
-💡 但是两个具有名字的结构体之间无法直接进行比较：
+💡 但是两个类型具有名字的结构体之间无法直接进行比较：
 
 ```go
 type People struct {
@@ -181,12 +182,12 @@ fmt.Println(c == Employee(d)) // true
 
 ```go
 a := struct {
- Name string
- Age  int
+    Name string
+    Age  int
 }{"Alice", 1}
 b := struct {
- Age  int
- Name string
+    Age  int
+    Name string
 }{1, "Alice"}
 
 fmt.Println(a == b) // Invalid operation: a == b (mismatched types struct {...} and struct {...})
