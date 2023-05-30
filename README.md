@@ -4,7 +4,7 @@
 
 如果存在问题欢迎提 issue，仓库地址：[https://github.com/TrenlinHuang/The-Go-Programming-Language](https://github.com/TrenlinHuang/The-Go-Programming-Language)
 
-## Table of Content
+## Table of Contents
 
 * [1 Tutorial](1-tutorial.md)
 * [2 Program Structure](2-program-structure.md)
