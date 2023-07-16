@@ -207,7 +207,7 @@ Go 调度器是由特定的 Go 语言结构来触发的。比如当一个 gorout
 
 #### 9.8.3 GOMAXPROCS
 
-Go 调度器使用 GOMAXPROCS 参数来确定可以使用多少个 OS 线程来同时执行代码，默认值时机器上的 CPU 数量。正在休眠或者正被通道通信阻塞的 goroutine 不需要占用线程。阻塞在 I/O 和其他系统调用以及调用其他语言写的函数的 goroutine 需要一个独立的 OS 线程，但 GOMAXPROCS 不用考虑这些 goroutine。
+Go 调度器使用 GOMAXPROCS 参数来确定可以使用多少个 OS 线程来同时执行代码，默认值是机器上的 CPU 数量。正在休眠或者正被通道通信阻塞的 goroutine 不需要占用线程。阻塞在 I/O 和其他系统调用以及调用其他语言写的函数的 goroutine 确实需要一个 OS 线程来管理，但 GOMAXPROCS 不将这些 goroutine 的数量计入。
 
 #### 9.8.4 goroutine 没有 id
 
