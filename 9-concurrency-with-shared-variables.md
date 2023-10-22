@@ -80,6 +80,10 @@ go func() {
 sync.Once 是并发安全的只执行一次的解决方案，可以用于延迟初始化。
 
 ```go
+func loadIcons() {
+    //...
+}
+
 var loadIconsOnece sync.Once
 var icons map[string]image.Image
 

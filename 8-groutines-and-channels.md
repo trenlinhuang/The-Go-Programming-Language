@@ -2,7 +2,7 @@
 
 ### 8.1 goroutine
 
-当一个程序启动时，它仅有一个调用 main 函数的 goroutine，我们称之为主 goroutine。新的 goroutine 通过 go 语句进行创建。语法上，一个 go 语句实在普通的函数或方法调用前加上 go 关键字前缀。
+当一个程序启动时，它仅有一个调用 main 函数的 goroutine，我们称之为主 goroutine。新的 goroutine 通过 go 语句进行创建。语法上，一个 go 语句是在普通的函数或方法调用前加上 go 关键字前缀。
 
 ### 8.2 示例：并发时钟服务
 
