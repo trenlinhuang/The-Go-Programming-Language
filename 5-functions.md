@@ -214,7 +214,7 @@ func Parse(input string) (s *Syntax, err error) {
         if p := recover(); p!= nil {
             err = fmt.Errorf("internal error: %v", p)
         }
-    }
+    }()
 }
 ```
 
