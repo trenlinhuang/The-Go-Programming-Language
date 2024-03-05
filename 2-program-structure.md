@@ -94,7 +94,7 @@ string, b
 💡 如果在命令行中把标志参数写到非标识参数后，将无法被正常解析：
 
 ```
->go run . "a" "b" -i 100
+> go run . "a" "b" -i 10
 [a b -i 10]
 100
 ---flag.Args()---
@@ -103,11 +103,12 @@ string, b
 string, -i
 string, 10
 ---os.Args---
-string, C:\Users\***\AppData\Local\Temp\go-build******\b001\exe\**.exe
+string, C:\Users\acer\AppData\Local\Temp\go-build1468167120\b001\exe\main.exe
 string, a
 string, b
 string, -i
-string, 100
+string, 10
+
 ```
 
 #### 2.3.3 new函数
